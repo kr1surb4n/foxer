@@ -16,6 +16,7 @@ if [[ ! -e $PROFILE_PATH ]]; then
 fi
 
 # if passed file with urls
-URLS=$2
+shift 2
+URLS=$@
 
 firefox -no-remote -P "${PROFILE_NAME}" $URLS

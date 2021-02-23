@@ -15,6 +15,7 @@ if [[ ! -e $PROFILE_PATH ]]; then
 fi
 
 # if passed file with urls
-URLS=$2
+shift 2
+URLS=$@
 
 google-chrome --user-data-dir="${PROFILE_PATH}" $URLS
