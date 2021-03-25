@@ -14,12 +14,4 @@ if [[ ! -e $PROFILE_PATH ]]; then
    mkdir -p $PROFILE_PATH
 fi
 
-# if passed file with urls
-shift 1
-URLS=$@
-
-if [[ $PROFILE_NAME == $URLS ]];then
-	URLS=""
-fi
-
-google-chrome --user-data-dir="${PROFILE_PATH}" $URLS
+google-chrome --user-data-dir="${PROFILE_PATH}"

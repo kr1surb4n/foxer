@@ -11,11 +11,4 @@ if [[ ! -e $PROFILE_PATH ]]; then
    firefox -no-remote -CreateProfile "${PROFILE_NAME} ${PROFILE_PATH}"
 fi
 
-# if passed file with urls
-shift 1
-URLS=$@
-
-if [[ $PROFILE_NAME == $URLS ]];then
-    URLS=""
-fi
-firefox -no-remote -P "${PROFILE_NAME}" $URLS
+firefox -no-remote -P "${PROFILE_NAME}"
