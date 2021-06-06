@@ -1,9 +1,17 @@
 #!/bin/bash
 SUFFIX="-ff"
-PROFILES_DIR="${GLOBAL_PROFILES:=$HOME/profiles/browsers}"
+PROFILES_DIR="${FOXER_PROFILES:=$HOME/profiles/browsers}"
 
 PROFILE_NAME=$1
 PROFILE_PATH="${PROFILES_DIR}/${PROFILE_NAME}${SUFFIX}"
+
+if [[ -z "$1" ]]; then
+     echo "You need to provide the name of the profile"
+     echo
+     echo "Usage:"
+     echo "   foxer PROFILE_NAME"
+     exit
+fi
 
 # if not exists ${PROFILE_PATH}
 if [[ ! -e $PROFILE_PATH ]]; then

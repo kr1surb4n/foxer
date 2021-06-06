@@ -1,46 +1,86 @@
-Foxer
-=====
+# Foxer
+
+Create(organize a bit) and use diferent Firefox or Chrome profiles.
+ 
+To start a Firefox instance with profile `work` : 
+```foxer work```
+
+If this is first time you run it then this will create a profile `work`, under the 
+`$HOME/profiles/browers` path. Then start the browser.
+
+Next time, browser will start using this profile.
 
 
-Create, use and organize Firefox and Chrome profiles. 
-Usage:
+Firefox adds `-ff` sufix.
+Chrome adds `-gc` suffix.
+Path to the profile `$HOME/profiles/browers/work-ff`.
 
-```foxer NAME```
+For Chrome use `chromer`
 
-will create a profile of NAME, under the
-${GLOBAL_PROFILES}/${NAME}${SUFFIX} ($HOME/profiles/browers by default) path.
-SUFFIX is -ff for foxer and -gc for chrome. Or use profile of this NAME.
+## Path to browser profiles
 
-Why?
-====
+Default path to folder with profiles: `~/profiles/browsers`
+You can change that with setting `FOXER_PROFILES` ENV variables
 
-Fuck marketing shit. That's why. 
-Different profiles, different pages, different logins.
-Fuck you profiling algorithms.
+```
+FOXER_PROFILES=~/profiles/browsers
+```
 
-You can have one profile, with tools, bookmarks, browsing history,
-all related to your job. 
+# Why?
 
-One profile for browsing stuff. 
-Another for big Project X. 
+How to organize many tabs, logins, extensions, and bookmarks
+for different use contexts and have little mess? 
 
-All your data, settings, cookies, preserved logins
-reduced neatly to one folder.  
+I have checked many browser plugins, they are ok. In the end,
+they don't do the job. Some of them don't work well with
+other plugins I use (i.e. OneTab breaks TabGroups completely).
+Some have strange glitches. Simply things are not so
+smooth. 
 
-All your work related urls in on profile.
+When I work, I don't want to mix private logins with work logins. A similar thing is with bookmarks or used tabs.
+It would be awesome to have, like a browser for work, a browser
+for project X, for fun, and reading news.
 
-Minus
-=====
+Also, it would be cool, if I could all the profiling that is done by the ad companies could be limited. The best option would be if it could mess up with their profiling algorithms. 
+At least it's a nice dream. 
 
-!!! ALWAYS BACKUP YOUR PROFILES !!!
+There is already something like that. It's called a profile.
+Each browser has profiles. The only problem is the switching.
+The switch is always the problem. So why even switch?
+We can start many browser instances, each with a different
+profile. I created a simple script [Foxer]() for that.
 
-A profile is often related to browser version.
-To read it, you need browser with proper version.
+Say, I want to start work-related browser:
+```foxer work```
 
-It is adviced to download the browser archive and keep it some where.
+News?
+```foxer news```
 
+With Bash alias, you can make a command `work_browser` and
+bam! One command to start the work.
 
-TODO
-====
+Also, you gain a bit of control over the profiles. 
+By default, they go to `~/profiles/browsers`. 
+
+So there are problems too.
+You have to back up your profiles. Periodically the best.
+
+A profile is connected to the browser version. 
+To read it, you need a browser with the proper version. 
+Sometimes, newer versions of browsers will
+change a profile into a total mess. There are no
+undo buttons.
+
+So, it is advised to keep an archive with the 
+browser, with the same version, you are using.
+
+Some things need attention.
+It would be sweet to have plugins installed
+from some folder, bundle, or list. 
+There is also the issue of every cookie. Can it
+be somehow stopped?
+
+# TODO
 1. Periodic cookie cleaning.
-2. How to fuck with evercookie? ( https://github.com/przor3n/evercookie )
+2. Loading sets of plugins.
+2. How to deal with evercookie? ( https://github.com/przor3n/evercookie )
