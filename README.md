@@ -76,9 +76,7 @@ browser, with the same version, you are using.
 
 Some things need attention.
 It would be sweet to have plugins installed
-from some folder, bundle, or list. 
-There is also the issue of every cookie. Can it
-be somehow stopped?
+from some folder, bundle, or list. It would be sweet to have plugins installed from some folder, bundle, or list. The icons could also be different for different profile (I don't think it's possible).
 
 # TODO
 1. Periodic cookie cleaning.
