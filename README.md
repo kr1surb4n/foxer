@@ -48,7 +48,7 @@ There is already something like that. It's called a profile.
 Each browser has profiles. The only problem is the switching.
 The switch is always the problem. So why even switch?
 We can start many browser instances, each with a different
-profile. I created a simple script [Foxer]() for that.
+profile. I created a simple script [Foxer](https://github.com/kr1surb4n/foxer) for that.
 
 Say, I want to start work-related browser:
 ```foxer work```
