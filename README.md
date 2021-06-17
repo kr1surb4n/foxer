@@ -17,6 +17,13 @@ Path to the profile `$HOME/profiles/browers/work-ff`.
 
 For Chrome use `chromer`
 
+Sweet one-liner to choose the profiles with `fzf` 
+```
+foxer "$(ls $HOME/profiles/browsers | while read folder ; do echo "${folder%-ff}" ; done | while read folder; do ech
+o "${folder%-gc}" ; done | fzf)"
+```
+
+
 ## Path to browser profiles
 
 Default path to folder with profiles: `~/profiles/browsers`
