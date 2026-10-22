@@ -1,22 +1,42 @@
 #!/bin/bash
-SUFFIX="-ff"
-PROFILES_DIR="${FOXER_PROFILES:=$HOME/profiles/browsers}"
+
+# variable FIREFOX_BINARY holds the path to the firefox binary 
+FIREFOX_BINARY="${FIREFOX_BINARY:=firefox}"
+
+# variable FOXER_PROFILES holds the path to the profiles folder
+PROFILES_DIR="${FOXER_PROFILES:=$HOME/profiles/browsers/firefox}"
 
 PROFILE_NAME=$1
-PROFILE_PATH="${PROFILES_DIR}/${PROFILE_NAME}${SUFFIX}"
+PROFILE_PATH="${PROFILES_DIR}/${PROFILE_NAME}"
 
 if [[ -z "$1" ]]; then
      echo "You need to provide the name of the profile"
      echo
      echo "Usage:"
      echo "   foxer PROFILE_NAME"
+     echo "        -- will create a new profile under \$HOME/profiles/browsers/firefox/PROFILE_NAME"
+     echo
+     echo "Configuration:"
+     echo 
+     echo "Environment variables:"
+     echo "FIREFOX_BINARY - path to firefox binary, default: firefox "
+     echo "FOXER_PROFILES - path to folder with browser profiles"
+     echo "                   default: \$HOME/profiles/browsers/firefox (path is created if it does not exist)"
      exit
 fi
 
-# if not exists ${PROFILE_PATH}
-if [[ ! -e $PROFILE_PATH ]]; then
-   echo "No path, building a profile"
-   firefox -no-remote -CreateProfile "${PROFILE_NAME} ${PROFILE_PATH}"
+# if you dont have the profile folder, create one
+if [[ ! -e $PROFILES_DIR ]]; then
+     echo "Creating profiles directory under: ${PROFILES_DIR}"
+     mkdir -p $PROFILES_DIR
 fi
 
-firefox -no-remote -P "${PROFILE_NAME}"
+# if not exists PROFILE_PATH, make a new profile
+if [[ ! -e $PROFILE_PATH ]]; then
+   echo "Profile does not exist, building a profile in ${PROFILE_PATH}"
+   $FIREFOX_BINARY --no-remote -CreateProfile "${PROFILE_NAME} ${PROFILE_PATH}"
+   # it won't start the browser...
+fi
+
+# ...this will start the browser
+$FIREFOX_BINARY --new-instance --profile "${PROFILE_PATH}"

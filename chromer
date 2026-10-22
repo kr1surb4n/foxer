@@ -1,21 +1,36 @@
 #!/bin/bash
-SUFFIX="-gc"
-PROFILES_DIR="${FOXER_PROFILES:=$HOME/profiles/browsers}"
+
+# variable CHROME_BINARY holds the path to the firefox binary 
+CHROME_BINARY="${CHROME_BINARY:=google-chrome}"
+
+# variable CHROMER_PROFILES holds the path to the profiles folder
+PROFILES_DIR="${CHROMER_PROFILES:=$HOME/profiles/browsers/chrome}"
 
 PROFILE_NAME=$1
-PROFILE_PATH="${PROFILES_DIR}/${PROFILE_NAME}${SUFFIX}"
+PROFILE_PATH="${PROFILES_DIR}/${PROFILE_NAME}"
 
 if [[ -z "$1" ]]; then
      echo "You need to provide the name of the profile"
      echo
      echo "Usage:"
      echo "   chromer PROFILE_NAME"
+     echo "        -- will create a new profile under \$HOME/profiles/browsers/chrome/PROFILE_NAME"
+     echo
+     echo "Configuration:"
+     echo "CHROMER_PROFILES - path to folder with browser profiles"
+     echo "                   default: \$HOME/profiles/browsers/firefox (path is created if not present)"
      exit
 fi
+
+if [[ -z "${CHROMER_PROFILES}" ]]; then
+     echo "Creating profiles directory under ${PROFILES_DIR}"
+     mkdir -p $PROFILES_DIR
+fi
+
 
 # if not exists ${PROFILE_PATH}
 if [[ ! -e $PROFILE_PATH ]]; then
    mkdir -p $PROFILE_PATH
 fi
 
-google-chrome --user-data-dir="${PROFILE_PATH}"
+$CHROME_BINARY --user-data-dir="${PROFILE_PATH}"

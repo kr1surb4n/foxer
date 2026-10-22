@@ -6,13 +6,10 @@ To start a Firefox instance with profile `work` :
 ```foxer work```
 
 If this is first time you run it then this will create a profile `work`, under the 
-`$HOME/profiles/browers` path. Then start the browser.
+`$HOME/profiles/browers/firefox/work` path. Then it will start the browser.
 
-Next time, browser will start using this profile.
+Next time when you run this command, the browser will start using this profile.
 
-
-Firefox adds `-ff` sufix.
-Chrome adds `-gc` suffix.
 Path to the profile `$HOME/profiles/browers/work-ff`.
 
 For Chrome use `chromer`
